@@ -1,0 +1,41 @@
+
+.board-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px; /* Espacio entre los tableros */
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+.ship {
+  background-color: #3498db;
+}
+
+.empty {
+  background-color: #f2f2f2;
+}
+
+.app {
+  text-align: center;
+  padding: 20px;
+}
+
+.clicked {
+  background-color: rgb(51, 51, 51); /* Cambia el color al hacer clic */
+}
