@@ -33,9 +33,9 @@ function App() {
     <div className="app">
       <h1>Battleship Game Board</h1>
 
-      <div className="board-container">
+      
         <Board gameBoard={gameBoard} />
-      </div>
+  
 
     </div>
   );

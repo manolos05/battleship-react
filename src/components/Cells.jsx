@@ -2,16 +2,18 @@
 
 import React, { useState } from 'react';
 
-export const Cells = ({ value }) => {
-  const [isClicked, setIsClicked] = useState(false);
+export const Cells = ({ value , showShips }) => {
+
+  const [cellValue, setcellValue] = useState("");
+  
 
   const handleClick = () => {
-    setIsClicked(true);
-  };
+    value === 1 ? setcellValue('hit') : setcellValue('clicked')
+  }
 
   return (
     <div
-      className={`cell ${value === 1 ? 'ship' : 'empty'} ${isClicked ? 'clicked' : ''}`}
+     className={`cell ${value === 1 && showShips ? 'ship' : 'empty'} ${cellValue}`} 
       onClick={handleClick}
     ></div>
   );
