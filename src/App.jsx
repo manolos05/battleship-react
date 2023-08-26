@@ -1,5 +1,9 @@
-import { Board } from "./components/Board"
+
+
+import { Board } from './components/'
+
 import './App.css';
+
 
 const gameBoard = [
   [1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
@@ -15,16 +19,16 @@ const gameBoard = [
 ];
 
 const gameBoardCPU = [
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
 ];
 
 function App() {
@@ -33,8 +37,18 @@ function App() {
     <div className="app">
       <h1>Battleship Game Board</h1>
 
-      
-        <Board gameBoard={gameBoard} />
+      <div className="main"> 
+      <Board
+  gameBoard={gameBoard}
+  playerNumber="1"
+ 
+/>
+<Board
+  gameBoard={gameBoardCPU}
+  playerNumber="CPU"
+
+/>
+      </div>
   
 
     </div>

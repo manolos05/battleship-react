@@ -1,15 +1,15 @@
 
 .board-container {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  justify-content: center; 
+  align-items: center; /
 }
 
 .board {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 10px; /* Espacio entre los tableros */
+  margin: 10px 50px; 
 }
 
 .row {
@@ -29,6 +29,12 @@
 
 .empty {
   background-color: #f2f2f2;
+}
+
+.main {
+  display: flex ;
+  justify-content: center;
+
 }
 
 .app {
