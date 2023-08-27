@@ -45,7 +45,6 @@ function App() {
     setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
   };
 
-
   const  selectRandomPosition = (board) => {
 
   
@@ -58,10 +57,6 @@ function App() {
     return [randomRow, randomCol];
   }
   
-
- 
-
-
   return (
     <div className="app">
       <h1>Battleship Game Board</h1>
