@@ -32,18 +32,35 @@ const gameBoardCPU = [
   [0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
 ];
 
+
 function App() {
 
-  const [currentTurn, setCurrentTurn] = useState('Player');
+  const [currentTurn, setCurrentTurn] = useState('CPU');
+  const [ cpuCoordinate, setcpuCoordinate] = useState([])
 
-  const handleTurn = (playerNumber, event ) => {
-    if ((playerNumber === 'Player' && currentTurn === 'CPU') || (playerNumber === 'CPU' && currentTurn === 'Player')) {
-      event.preventDefault(); 
-       alert('Wrong Board')
-      
+  const handleTurn = (player ) => {
+    if (currentTurn !== player) {
+      return
     }
     setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
   };
+
+
+  const  selectRandomPosition = (board) => {
+
+  
+    const numRows = board.length;
+    const numCols = board[0].length;
+    
+    const randomRow = Math.floor(Math.random() * numRows);
+    const randomCol = Math.floor(Math.random() * numCols);
+    setCurrentTurn('Player')
+    return [randomRow, randomCol];
+  }
+  
+
+ 
+
 
   return (
     <div className="app">
@@ -51,16 +68,18 @@ function App() {
 
       <div className="main">
         <Board
+          turn={currentTurn}
           gameBoard={gameBoard}
-          playerNumber="Player"
-          onClick={(event) => handleTurn('Player', event)}
-
+          player="Player"
+          onClick={() => handleTurn('Player')}
+          cpuCoordinate={cpuCoordinate}
         />
         <Board
+          turn={currentTurn}
           gameBoard={gameBoardCPU}
-          playerNumber="CPU"
-          onClick={(event) => handleTurn('CPU', event)}
-
+          player="CPU"
+          onClick={() => {handleTurn('CPU');  setcpuCoordinate(selectRandomPosition(gameBoard))}}
+    
         />
       </div>
 
