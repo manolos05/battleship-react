@@ -23,6 +23,7 @@ export const Cells = ({ value , showShips   }) => {
     <div
      className={ `cell ${value === 1  && showShips  ? 'ship' :  'empty'} ${cellValue}  `} 
       onClick={handleClick}
+      
     ></div>
     
    
