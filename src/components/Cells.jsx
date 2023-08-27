@@ -10,7 +10,7 @@ export const Cells = ({ value , showShips , cellClicked }) => {
   const handleClick = () => {
     if (value === 1) {
       setCellValue('hit');
-      alert('hola')
+    
     } else {
       setCellValue('clicked');
     }
