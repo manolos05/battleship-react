@@ -47,27 +47,28 @@ function App() {
     setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
   };
 
-  const  selectRandomPosition = (board) => {
+  const  selectRandomPosition = (board , existingCoordinates) => {
     const numRows = board.length;
     const numCols = board[0].length;
-    
-    const randomRow = Math.floor(Math.random() * numRows);
-    const randomCol = Math.floor(Math.random() * numCols);
-
-    setCurrentTurn('Player')
-
+  
+    let randomRow, randomCol;
+    do {
+      randomRow = Math.floor(Math.random() * numRows);
+      randomCol = Math.floor(Math.random() * numCols);
+    } while (existingCoordinates.some(coord => coord[0] === randomRow && coord[1] === randomCol));
+  
     return [randomRow, randomCol];
 
   }
   const handleCpuClick = () => {
-    const randomPos = selectRandomPosition(gameBoard);
+    const randomPos = selectRandomPosition(gameBoard, diccCoordinate);
     setcpuCoordinate(randomPos);
     setDiccCoordinate((prevCoordinates) => [...prevCoordinates, randomPos]);
 
   };
 
-  console.log(diccCoordinate)
-
+  
+console.log(diccCoordinate)
 
 
   
