@@ -37,8 +37,10 @@ function App() {
 
   const [currentTurn, setCurrentTurn] = useState('CPU');
   const [ cpuCoordinate, setcpuCoordinate] = useState([])
+  const [ diccCoordinate, setDiccCoordinate] = useState([])
 
   const handleTurn = (player ) => {
+    
     if (currentTurn !== player) {
       return
     }
@@ -46,16 +48,28 @@ function App() {
   };
 
   const  selectRandomPosition = (board) => {
-
-  
     const numRows = board.length;
     const numCols = board[0].length;
     
     const randomRow = Math.floor(Math.random() * numRows);
     const randomCol = Math.floor(Math.random() * numCols);
+
     setCurrentTurn('Player')
+
     return [randomRow, randomCol];
+
   }
+  const handleCpuClick = () => {
+    const randomPos = selectRandomPosition(gameBoard);
+    setcpuCoordinate(randomPos);
+    setDiccCoordinate((prevCoordinates) => [...prevCoordinates, randomPos]);
+
+  };
+
+  console.log(diccCoordinate)
+
+
+
   
   return (
     <div className="app">
@@ -73,7 +87,7 @@ function App() {
           turn={currentTurn}
           gameBoard={gameBoardCPU}
           player="CPU"
-          onClick={() => {handleTurn('CPU');  setcpuCoordinate(selectRandomPosition(gameBoard))}}
+          onClick={handleCpuClick}
     
         />
       </div>

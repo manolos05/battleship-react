@@ -4,11 +4,9 @@ import { useState } from "react";
 import { Cells } from "./Cells";
 
 
-export const Board = ({ gameBoard, player, onClick, turn, cpuCoordinate }) => {
+export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
 
   const [showShips, setShowShips] = useState(false);
-
-  
 
   const toggleShowShips = () => {
     setShowShips(!showShips)
@@ -20,7 +18,7 @@ export const Board = ({ gameBoard, player, onClick, turn, cpuCoordinate }) => {
 <div className="board" >
   <h2> {player} </h2>
         {gameBoard.map((row, rowIndex) => (
-          <div key={rowIndex} className="row" onClick={onClick} style={{pointerEvents: 'Player' === player && "none" }}>
+          <div key={rowIndex} className="row" onClick={onClick} style={{pointerEvents: player === 'Player' && "none" }}>
             {row.map((cell, columnIndex) => {
              
                return <Cells
@@ -32,7 +30,6 @@ export const Board = ({ gameBoard, player, onClick, turn, cpuCoordinate }) => {
               })}
 
           </div>
-          
         ))}
        
         <br />

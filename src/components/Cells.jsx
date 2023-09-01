@@ -8,6 +8,7 @@ export const Cells = ({ value , showShips , cellClicked }) => {
   
 
   const handleClick = () => {
+
     if (value === 1) {
       setCellValue('hit');
     
@@ -29,8 +30,10 @@ export const Cells = ({ value , showShips , cellClicked }) => {
 
     <>
     <div
-        className={`cell ${value === 1 && showShips ? 'ship' : 'empty'} ${cellValue}  `} 
+        className={`cell ${value === 1 && showShips ? 'ship' : 'empty'} ${cellValue}`}  
       onClick={handleClick}
+    
+      
 
       
     ></div>

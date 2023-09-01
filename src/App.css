@@ -44,6 +44,7 @@
   padding: 20px;
 }
 
+
 .clicked {
   background-color: rgb(51, 51, 51);
   border: 1px solid rgb(32, 27, 27);
@@ -51,5 +52,13 @@
 
 .hit {
   background-color: rgb(214, 31, 31);
-  border: 1px solid rgb(230, 93, 93);
+  border: 1px solid rgb(230, 93, 93); 
 }
+
+.clicked {
+  background-color: rgb(51, 51, 51);
+  border: 1px solid rgb(32, 27, 27);
+}
+
+
+
