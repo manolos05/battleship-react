@@ -2,16 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 
-export const Cells = ({ value , showShips , cellClicked }) => {
+export const Cells = ({ value , showShips , cellClicked, onClick }) => {
 
   const [cellValue, setCellValue] = useState("");
   
 
   const handleClick = () => {
-
+    onClick()
     if (value === 1) {
       setCellValue('hit');
-    
     } else {
       setCellValue('clicked');
     }
@@ -20,7 +19,7 @@ export const Cells = ({ value , showShips , cellClicked }) => {
 
   useEffect(() => {
     if ( cellClicked ) {
-      handleClick();
+      handleClick()
     }
   }, [cellClicked])
   

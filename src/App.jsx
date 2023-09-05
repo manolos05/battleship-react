@@ -41,17 +41,18 @@ function App() {
 
   const handleTurn = (player ) => {
     
-    if (currentTurn !== player) {
-      return
-    }
-    setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
-  };
+     if (currentTurn !== player) {
+       return
+     }
+     setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
+   };
 
   const  selectRandomPosition = (board , existingCoordinates) => {
     const numRows = board.length;
     const numCols = board[0].length;
   
-    let randomRow, randomCol;
+    let randomRow = 0; 
+    let randomCol = 0;
     do {
       randomRow = Math.floor(Math.random() * numRows);
       randomCol = Math.floor(Math.random() * numCols);
@@ -66,10 +67,6 @@ function App() {
     setDiccCoordinate((prevCoordinates) => [...prevCoordinates, randomPos]);
 
   };
-
-  
-console.log(diccCoordinate)
-
 
   
   return (
@@ -89,7 +86,6 @@ console.log(diccCoordinate)
           gameBoard={gameBoardCPU}
           player="CPU"
           onClick={handleCpuClick}
-    
         />
       </div>
 

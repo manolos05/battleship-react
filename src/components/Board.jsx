@@ -18,7 +18,7 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
 <div className="board" >
   <h2> {player} </h2>
         {gameBoard.map((row, rowIndex) => (
-          <div key={rowIndex} className="row" onClick={onClick} style={{pointerEvents: player === 'Player' && "none" }}>
+          <div key={rowIndex} className="row" style={{pointerEvents: player === 'Player' && "none" }}>
             {row.map((cell, columnIndex) => {
              
                return <Cells
@@ -26,6 +26,7 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
                 value={cell}
                 showShips={showShips}
                 cellClicked={JSON.stringify([rowIndex, columnIndex]) === JSON.stringify(cpuCoordinate)}
+                onClick={onClick}
               />
               })}
 
