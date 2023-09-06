@@ -1,16 +1,38 @@
 
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Cells } from "./Cells";
 
 
 export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
 
+
   const [showShips, setShowShips] = useState(false);
+  const [playerHitCount, setPlayerHitCount] = useState(0)
+  const [cpuHitCount, setCpuHitCount] = useState(0)
 
   const toggleShowShips = () => {
     setShowShips(!showShips)
   }
+
+  useEffect(()=>{
+    if(playerHitCount === 18){
+      alert('Has Ganado')
+
+    } else if (cpuHitCount === 18){
+      alert('Has Perdido')
+    }
+  }, [playerHitCount,cpuHitCount])
+
+
+  const updateHitCounters  = (value) => {
+    if (value === 1 && player === 'CPU') {
+      setPlayerHitCount(prev => prev + 1)
+    } else if (value === 1 && player === 'Player') {
+      setCpuHitCount(prev => prev +1)
+    }
+  }
+
 
   return(
 
@@ -26,7 +48,7 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
                 value={cell}
                 showShips={showShips}
                 cellClicked={JSON.stringify([rowIndex, columnIndex]) === JSON.stringify(cpuCoordinate)}
-                onClick={onClick}
+                onClick={() => {onClick();updateHitCounters(cell) }}
               />
               })}
 
