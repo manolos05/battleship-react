@@ -4,48 +4,54 @@ import { Board } from './components/'
 
 import './App.css';
 import { useState } from 'react';
+import { generateRandomGameBoard } from './utils/boardUtil';
 
 
-const gameBoard = [
-  [1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 0, 0, 1, 1, 0, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-];
-
-const gameBoardCPU = [
-  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 1, 1, 1, 0, 0, 0, 0, 1],
-];
 
 
 function App() {
 
+
+  const [cpuBoard, setCpuBoard] = useState([])
+const [playerBoard, setPlayerBoard] = useState([])
+
+
+
+
+useState(()=>{
+  setCpuBoard(generateRandomGameBoard())
+  setPlayerBoard(generateRandomGameBoard())
+ 
+},[])
+
+
+
+
+
+
+  /* GESTION DE TURNOS 
+    Los turnos son gestionados por un estado, el que recibe como parametro un sting,
+    con el condicional manejamos el turno del jugador correspondiente 
+  
+  
+  */
+
   const [currentTurn, setCurrentTurn] = useState('CPU');
-  const [ cpuCoordinate, setcpuCoordinate] = useState([])
-  const [ diccCoordinate, setDiccCoordinate] = useState([])
 
   const handleTurn = (player ) => {
     
-     if (currentTurn !== player) {
-       return
-     }
-     setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
-   };
+    if (currentTurn !== player) {
+      return
+    }
+    setCurrentTurn(currentTurn === 'Player' ? 'CPU' : 'Player');
+  };
+
+  /*fin de gestion de turnos */ 
+
+
+
+  const [ cpuCoordinate, setcpuCoordinate] = useState([])
+  const [ diccCoordinate, setDiccCoordinate] = useState([])
 
   const  selectRandomPosition = (board , existingCoordinates) => {
     const numRows = board.length;
@@ -62,7 +68,8 @@ function App() {
 
   }
   const handleCpuClick = () => {
-    const randomPos = selectRandomPosition(gameBoard, diccCoordinate);
+    
+    const randomPos = selectRandomPosition(playerBoard, diccCoordinate);
     setcpuCoordinate(randomPos);
     setDiccCoordinate((prevCoordinates) => [...prevCoordinates, randomPos]);
 
@@ -73,17 +80,20 @@ function App() {
     <div className="app">
       <h1>Battleship Game Board</h1>
 
+
+
+
       <div className="main">
         <Board
           turn={currentTurn}
-          gameBoard={gameBoard}
+          gameBoard={playerBoard}
           player="Player"
           onClick={() => handleTurn('Player')}
           cpuCoordinate={cpuCoordinate}
         />
         <Board
           turn={currentTurn}
-          gameBoard={gameBoardCPU}
+          gameBoard={cpuBoard}
           player="CPU"
           onClick={handleCpuClick}
         />

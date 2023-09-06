@@ -16,10 +16,10 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
   }
 
   useEffect(()=>{
-    if(playerHitCount === 18){
+    if(playerHitCount === 17){
       alert('Has Ganado')
 
-    } else if (cpuHitCount === 18){
+    } else if (cpuHitCount === 17){
       alert('Has Perdido')
     }
   }, [playerHitCount,cpuHitCount])
@@ -30,6 +30,7 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
       setPlayerHitCount(prev => prev + 1)
     } else if (value === 1 && player === 'Player') {
       setCpuHitCount(prev => prev +1)
+
     }
   }
 
