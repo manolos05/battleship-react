@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Cells } from "./Cells";
 
 
-export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
+export const Board = ({ gameBoard, player, onClick, cpuCoordinate , onClick1 }) => {
 
 
   const [showShips, setShowShips] = useState(false);
@@ -58,6 +58,8 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate }) => {
        
         <br />
         {player === "Player"  && <button onClick={() => toggleShowShips()}>Show Ships</button> }
+
+      
       </div>
     </>
   

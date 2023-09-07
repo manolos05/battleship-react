@@ -4,7 +4,7 @@ import { Board } from './components/'
 
 import './App.css';
 import { useState } from 'react';
-import { generateRandomGameBoard } from './utils/boardUtil';
+import { generateRandomGameBoard } from './utils/boardUtils';
 
 
 
@@ -12,10 +12,8 @@ import { generateRandomGameBoard } from './utils/boardUtil';
 function App() {
 
 
-  const [cpuBoard, setCpuBoard] = useState([])
+const [cpuBoard, setCpuBoard] = useState([])
 const [playerBoard, setPlayerBoard] = useState([])
-
-
 
 
 useState(()=>{
@@ -24,9 +22,10 @@ useState(()=>{
  
 },[])
 
-
-
-
+const resetBoard = () => {
+  setCpuBoard(generateRandomGameBoard())
+  setPlayerBoard(generateRandomGameBoard())
+}
 
 
   /* GESTION DE TURNOS 
@@ -80,9 +79,6 @@ useState(()=>{
     <div className="app">
       <h1>Battleship Game Board</h1>
 
-
-
-
       <div className="main">
         <Board
           turn={currentTurn}
@@ -98,6 +94,8 @@ useState(()=>{
           onClick={handleCpuClick}
         />
       </div>
+
+      <button className="reset" onClick={resetBoard}> Reiniciar </button>
 
 
     </div>
