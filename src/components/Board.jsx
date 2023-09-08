@@ -20,17 +20,18 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate    }) => {
   const [playerHitCount, setPlayerHitCount] = useState(0)
   const [cpuHitCount, setCpuHitCount] = useState(0)
 
- 
+  const playerWins = localStorage.getItem("Player");
+  const CpuWins = localStorage.getItem("Cpu");
 
 
   useEffect(()=>{
-    if(playerHitCount === 17){
+    if(playerHitCount === 3){
       alert('Has Ganado')
-    
+      localStorage.setItem("Player", Number(playerWins) + 1)
  
-    } else if (cpuHitCount === 17){
+    } else if (cpuHitCount === 3){
       alert('Has Perdido')
-     
+      localStorage.setItem("Cpu", Number(CpuWins) + 1)
     }
   
   }, [playerHitCount,cpuHitCount])

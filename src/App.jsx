@@ -78,10 +78,38 @@ const handleRestartGame = () => {
 
   };
 
-  
+  const playerWins = localStorage.getItem("Player");
+  const CpuWins = localStorage.getItem("Cpu");
   return (
     <div className="app">
       <h1>Battleship Game Board</h1>
+
+
+      <div
+        style={{
+          border: "1px solid black",
+          borderRadius: "8px",
+          width: "200px",
+          margin: "auto",
+        }}
+      >
+        <h2>Leaderboard</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        >
+          <div style={{ fontSize: "18px", marginRight: "20px" }}>
+            <strong>Player</strong> <span>{playerWins || 0}</span>
+          </div>
+          <div style={{ fontSize: "18px" }}>
+            <strong>Cpu</strong> <span>{CpuWins || 0}</span>
+          </div>
+        </div>
+      </div>
+      
 
       <div className="main">
         <Board
