@@ -2,11 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 
-export const Cells = ({ value , showShips , cellClicked, onClick }) => {
+export const Cells = ({ value , showShips , cellClicked, onClick  }) => {
 
   const [cellValue, setCellValue] = useState("");
-  
 
+
+
+// Utilizamos esta función para determinar si el disparo fue certero o fallido
   const handleClick = () => {
     onClick()
     if (value === 1) {
@@ -21,6 +23,7 @@ export const Cells = ({ value , showShips , cellClicked, onClick }) => {
     if ( cellClicked ) {
       handleClick()
     }
+ 
   }, [cellClicked])
   
 
@@ -31,7 +34,7 @@ export const Cells = ({ value , showShips , cellClicked, onClick }) => {
     <div
         className={`cell ${value === 1 && showShips ? 'ship' : 'empty'} ${cellValue}`}  
       onClick={handleClick}
-    
+        
       
 
       

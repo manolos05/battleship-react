@@ -1,31 +1,33 @@
-
+import { useState } from 'react';
 
 import { Board } from './components/'
-
-import './App.css';
-import { useState } from 'react';
 import { generateRandomGameBoard } from './utils/boardUtils';
 
-
+import './App.css';
 
 
 function App() {
 
-
+// Estados para el posicionamiento aleatorio de los barcos 
 const [cpuBoard, setCpuBoard] = useState([])
 const [playerBoard, setPlayerBoard] = useState([])
 
-
+ 
 useState(()=>{
   setCpuBoard(generateRandomGameBoard())
   setPlayerBoard(generateRandomGameBoard())
  
 },[])
 
-const resetBoard = () => {
+
+const handleRestartGame = () => {
   setCpuBoard(generateRandomGameBoard())
   setPlayerBoard(generateRandomGameBoard())
 }
+
+
+
+
 
 
   /* GESTION DE TURNOS 
@@ -48,8 +50,10 @@ const resetBoard = () => {
   /*fin de gestion de turnos */ 
 
 
-
+  // Gestión de las jugadas realizadas por la CPU:
+  // En este caso tenemos dos estados, el primero realiza de manera aleatoria la jugada de la CPU
   const [ cpuCoordinate, setcpuCoordinate] = useState([])
+  // En este estado almacenamos las jugadas realizadas y evitamos que se repitan 
   const [ diccCoordinate, setDiccCoordinate] = useState([])
 
   const  selectRandomPosition = (board , existingCoordinates) => {
@@ -86,16 +90,25 @@ const resetBoard = () => {
           player="Player"
           onClick={() => handleTurn('Player')}
           cpuCoordinate={cpuCoordinate}
+
+       
+         
         />
         <Board
           turn={currentTurn}
           gameBoard={cpuBoard}
           player="CPU"
           onClick={handleCpuClick}
+        
+          
         />
       </div>
 
-      <button className="reset" onClick={resetBoard}> Reiniciar </button>
+
+      <button onClick={handleRestartGame}> Reinicia el Juego</button>
+
+
+
 
 
     </div>

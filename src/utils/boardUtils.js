@@ -9,8 +9,8 @@ export const generateRandomGameBoard = () => {
       { name: 'Portaaviones', length: 5 },
       { name: 'Battleship', length: 4 },
       { name: 'Crucero', length: 3 },
-      { name: 'Destructor', length: 3 },
-      { name: 'Submarino', length: 2 },
+      { name: 'Submarino', length: 3 },
+      { name: 'Destructor', length: 2 },
     ];
   
     for (const ship of ships) {
