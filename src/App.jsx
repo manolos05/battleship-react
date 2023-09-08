@@ -105,7 +105,7 @@ const handleRestartGame = () => {
       </div>
 
 
-      <button onClick={handleRestartGame}> Reinicia el Juego</button>
+      <button onClick={() => window.location.reload()}> Reinicia el Juego</button>
 
 
 
