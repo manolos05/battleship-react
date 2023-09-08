@@ -25,11 +25,11 @@ export const Board = ({ gameBoard, player, onClick, cpuCoordinate    }) => {
 
 
   useEffect(()=>{
-    if(playerHitCount === 3){
+    if(playerHitCount === 17){
       alert('Has Ganado')
       localStorage.setItem("Player", Number(playerWins) + 1)
  
-    } else if (cpuHitCount === 3){
+    } else if (cpuHitCount === 17){
       alert('Has Perdido')
       localStorage.setItem("Cpu", Number(CpuWins) + 1)
     }
